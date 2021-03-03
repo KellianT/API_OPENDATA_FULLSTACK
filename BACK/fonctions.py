@@ -21,7 +21,7 @@ print(voir_csv('https://data.montpellier3m.fr/sites/default/files/ressources/TAM
 #     """This function permit to convert the csv file to list
 #     """
 #     df = voir_csv()
-#     choix_station = set(df['stop_name'].tolist())
+#     choix_station = set(df['station'].tolist())
 #     return choix_station
 # print(choix_station)
 
