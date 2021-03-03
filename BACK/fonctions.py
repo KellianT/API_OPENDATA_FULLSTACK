@@ -7,14 +7,24 @@ def voir_csv(csv):
     """This function return the CSV file in Pandas data format """
 
     # logging.info("création de la base de données")
-    db_tam = pandas.read_csv(csv,sep =';', header=2, names=['course', 'stop_code', 'stop_id',
-                                                   'station', 'ligne',
-                                                   'destination', 'direction_id',
-                                                   'is_theorical','heure_depart',
-                                                    'delay_sec','dest_arr_code'])
+    db_tam = pandas.read_csv(csv, sep =';',
+                                header=2,
+                                usecols=[3,4,5,7],
+                                names=['course', 'stop_code', 'stop_id',
+                                        'station', 'ligne',
+                                        'destination', 'direction_id',
+                                        'heure_depart','is_theorical',
+                                        'delay_sec','dest_arr_code']),
     return db_tam
+                                                    
+    # db_tam = db_tam.rename(columns={
+    #                     "stop_name":"station",
+    #                     "route_short_name":"ligne",
+    #                     "trip_headsign":"destination",
+    #                     "departure_time":"heure_depart"},inplace=True)
+  
 
-# print(voir_csv('https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv')) 
+print(voir_csv('https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv')) 
 
 def city_station():
 
