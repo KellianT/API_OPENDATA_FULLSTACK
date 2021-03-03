@@ -8,46 +8,52 @@ def voir_csv(csv):
 
     # logging.info("création de la base de données")
     db_tam = pandas.read_csv(csv, sep =';',
-                                header=2,
+                                header=1,
                                 usecols=[3,4,5,7],
-                                names=['course', 'stop_code', 'stop_id',
-                                        'station', 'ligne',
-                                        'destination', 'direction_id',
-                                        'heure_depart','is_theorical',
-                                        'delay_sec','dest_arr_code']),
-    return db_tam
+                                names=['station', 'ligne', 
+                                'direction','heure_depart'])
                                                     
     # db_tam = db_tam.rename(columns={
     #                     "stop_name":"station",
     #                     "route_short_name":"ligne",
     #                     "trip_headsign":"destination",
     #                     "departure_time":"heure_depart"},inplace=True)
-  
+    return db_tam
 
-print(voir_csv('https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv')) 
+# print(voir_csv('https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv')) 
 
-def city_station():
+# def city_station():
 
-    db_tam = voir_csv('https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv')
-    station_list = set(db_tam['station'].tolist())
-    return station_list
-
-print(city_station())
-
-
-# def prochain_transport():
-#     """This function order the csv file to make some request, and answer
-#     """
 #     db_tam = voir_csv('https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv')
-#     db_tam = db_tam.loc[db_tam['station'].isin([station])].sort_values(['heure_depart'], ascending=False)
-#     resultat = {}
-#     resultat["heure_depart"] = str(db_tam.iloc[0][8])
-#     resultat["station"] = str(db_tam.iloc[0][3])
-#     resultat["ligne"] = str(db_tam.iloc[0][4])
-#     resultat["destination"] = str(db_tam.iloc[0][5])
-#     return resultat
+#     station_list = set(db_tam['station'].tolist())
+#     return station_list
 
-# print(prochain_transport())
+# print(city_station())
+
+
+def prochain_transport(station):
+    """This function order the csv file to make some request, and answer
+    """
+    db_tam = voir_csv('https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv')
+    db_tam = db_tam.loc[db_tam['station'].isin([station])]
+
+    result = []
+
+    for i in range(len(db_tam)):
+        resultat = {}
+        resultat["heure_depart"] = str(db_tam.iloc[i][3])
+        resultat["station"] = str(db_tam.iloc[i][0])
+        resultat["ligne"] = str(db_tam.iloc[i][1])
+        resultat["direction"] = str(db_tam.iloc[i][2])
+        result.append(resultat)
+    
+    return result
+print(prochain_transport('GARE ST-ROCH T1'))
+
+# Transforme dico = + facile pour lire json
+# mettre resultat dans foction (changer les indexs)
+# iloc = faire une boucle qui ajoute mon résultat par rapport à ce que je veux récupérer comme valeur 
+# pour qu'il les ajoute dans mon dico
 
 
 
