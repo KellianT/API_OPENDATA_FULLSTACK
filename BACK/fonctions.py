@@ -34,8 +34,13 @@ def prochain_transport():
     resultat = {}
     resultat["heure_depart"] = str(db_tam.iloc[0][8])
     resultat["station"] = str(db_tam.iloc[0][3])
-    resultat["ligne"] = int(db_tam.iloc[0][4])
+    resultat["ligne"] = str(db_tam.iloc[0][4])
     resultat["destination"] = str(db_tam.iloc[0][5])
     return resultat
 
 print(prochain_transport)
+
+
+
+
+# def depart_arrivee():
