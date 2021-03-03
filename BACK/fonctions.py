@@ -6,7 +6,7 @@ def voir_csv(csv):
     
     """This function return the CSV file in Pandas data format """
 
-    # logging.info("création de la base de données")
+    logging.info("création de la base de données")
     db_tam = pandas.read_csv(csv, sep =';',
                                 header=2,
                                 usecols=[3,4,5,7],
@@ -16,15 +16,9 @@ def voir_csv(csv):
                                         'heure_depart','is_theorical',
                                         'delay_sec','dest_arr_code']),
     return db_tam
-                                                    
-    # db_tam = db_tam.rename(columns={
-    #                     "stop_name":"station",
-    #                     "route_short_name":"ligne",
-    #                     "trip_headsign":"destination",
-    #                     "departure_time":"heure_depart"},inplace=True)
   
 
-print(voir_csv('https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv')) 
+# print(voir_csv('https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv')) 
 
 def city_station():
 
@@ -32,10 +26,11 @@ def city_station():
     station_list = set(db_tam['station'].tolist())
     return station_list
 
-# print(city_station())
+print(city_station())
 
 
 def prochain_transport():
+
     """This function order the csv file to make some request, and answer
     """
     db_tam = voir_csv('https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv')
@@ -48,7 +43,7 @@ def prochain_transport():
     resultat["destination"] = str(db_tam.iloc[0][5])
     return resultat
 
-print(prochain_transport)
+# print(prochain_transport)
 
 
 
