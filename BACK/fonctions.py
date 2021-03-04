@@ -12,7 +12,6 @@ def voir_csv(csv):
     db_tam = pandas.read_csv(csv, sep =';',
                                 header=1,
                                 usecols=[3,4,5,7],
-<<<<<<< HEAD
                                 names=['station', 'ligne', 
                                 'direction','heure_depart'])
                                                     
@@ -22,7 +21,7 @@ def voir_csv(csv):
     #                     "trip_headsign":"destination",
     #                     "departure_time":"heure_depart"},inplace=True)
     return db_tam
-=======
+
                                 names=['course', 'stop_code', 'stop_id',
                                         'station', 'ligne',
                                         'destination', 'direction_id',
@@ -30,7 +29,7 @@ def voir_csv(csv):
                                         'delay_sec','dest_arr_code']),
     return db_tam
   
->>>>>>> 354fd960ac200658ac33888057105b9a19836e4a
+
 
 # print(voir_csv('https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv')) 
 
@@ -45,12 +44,8 @@ def city_station():
 # print(city_station())
 
 
-<<<<<<< HEAD
-def prochain_transport(station):
-=======
 def prochain_transport():
 
->>>>>>> 354fd960ac200658ac33888057105b9a19836e4a
     """This function order the csv file to make some request, and answer
         about the next transports.
         Range le résultat dans un dictionnaire pour lire j.son
@@ -61,7 +56,6 @@ def prochain_transport():
     db_tam = voir_csv('https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv')
     db_tam = db_tam.loc[db_tam['station'].isin([station])]
 
-<<<<<<< HEAD
     result = []
 
     for i in range(len(db_tam)):
@@ -74,9 +68,7 @@ def prochain_transport():
     
     return result
 print(prochain_transport('GARE ST-ROCH T1'))
-=======
-# print(prochain_transport)
->>>>>>> 354fd960ac200658ac33888057105b9a19836e4a
+
 
 
 # def depart_arrivee():
