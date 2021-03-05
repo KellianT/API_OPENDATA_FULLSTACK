@@ -1,0 +1,59 @@
+/* premiere partie pour le search */
+label {
+    display: block;
+    font: 1rem 'Fira Sans', sans-serif;
+}
+
+input,
+label {
+    margin: .4rem 0;
+}
+/* fin premiere partie search */
+
+
+/* CSS pour tableau */
+, ::before, : : after {
+    box-sizing: border-box;
+    margin : 0;
+    padding : 0;
+}
+
+body {
+    height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.tableau-stryle {
+    border-collapse: collapse;
+    min-width: 400px;
+    width: auto;
+    /* box-shadow: 0 5px 50px rgba(0, 0, 0, 0, 15); */
+    cursor: pointer;
+    margin: 100px auto;
+    border: 2px solid midnightblue;
+    background-color: #ffffff;
+}
+
+thead tr {
+    background-color: midnightblue;
+    color: #fff;
+    text-align: left;
+}
+
+td, th {
+    padding: 15px 20px;
+}
+
+tbody tr, td, th {
+    border: 1px solid #ddd
+}
+
+tbody tr:nth-child(even){
+    background-color: #f3f3f3;
+}
+
+ /* body {
+    color:black;
+    background-color:white;
+    background-image:url(https://images.pexels.com/photos/6000164/pexels-photo-6000164.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+    } */

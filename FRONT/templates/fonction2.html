@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Horaires de transports</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+
+<body>
+    <div class="mypanel"></div>
+
+    <script>
+    $.getJSON('http://127.0.0.1:5000//city/station/JACOU>', prochain_transport(station) {
+        
+        var text = `station : ${data.station}<br>
+                    ligne : ${data.station}<br>
+                    direction : ${data.station}<br>
+                    heure_depart : ${data.data.time}`
+                    
+        
+        $(".mypanel").html(text);
+    });
+    </script>
+    
+</body>
+</html>
