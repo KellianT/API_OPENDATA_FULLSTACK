@@ -4,14 +4,15 @@ import logging
 from flask import Flask, abort, jsonify
 from fonctions import prochain_transport
 from fonctions import depart_arrivee
-import sys
-sys.path.append('C:/Users/utilisateur/Desktop/API_OPENDATA_FULLSTACK/FRONT')
+from flask_cors import CORS
+
 app = Flask(__name__)
+CORS(app)
 
 
-@app.route('/')
-def entry_point():
-    return render_template('./app.html')
+# @app.route('/')
+# def entry_point():
+#     return render_template('./app.html')
 
 @app.route('/hello_world')
 def hello_world():
