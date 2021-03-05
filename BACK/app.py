@@ -1,7 +1,7 @@
 from flask import Flask, jsonify
-# , render_template
+from flask import render_template
 import logging
-#from flask import Flask, abort, jsonify
+from flask import Flask, abort, jsonify
 from fonctions import prochain_transport
 from fonctions import depart_arrivee
 app = Flask(__name__)
@@ -11,11 +11,11 @@ app = Flask(__name__)
 # def entry_point():
 #     return render_template('./app.html')
 
-@app.route('/hello_world')
+@app.route('/')
 def hello_world():
-    return 'Hello World'
+   return jsonify('Hello, World!')
 
-#il manque la premiere route
+# #il manque la premiere route
 # @app.route('/city/<stations>')
 # def station():
 #     return jsonify(city_station())
