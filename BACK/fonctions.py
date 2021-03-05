@@ -2,7 +2,6 @@ import pandas
 from flask import abort
 # import logging
 
-
 def voir_csv(csv):
     """This function return the CSV file in Pandas data format
         Rename and delete unusual columns.
@@ -31,7 +30,7 @@ def city_station():
     station_list = set(db_tam['station'].tolist())
     return station_list
 
-# print(city_station())
+print(city_station())
 
 
 def prochain_transport(station):
