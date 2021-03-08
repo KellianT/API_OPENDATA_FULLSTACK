@@ -33,7 +33,7 @@ def city_station():
     """ This function displays all the stations. """
 
     db_tam = voir_csv('https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv')
-    station_list = set(db_tam['station'].tolist())
+    station_list = list(set(db_tam['station'].tolist()))
     return station_list
 
 
