@@ -1,7 +1,11 @@
 import pandas
 import logging
 from flask import abort
-import logging
+
+
+
+
+
 
 def voir_csv(csv):
 
@@ -18,10 +22,12 @@ def voir_csv(csv):
                                 'direction', 'heure_depart'])                                                
     return db_tam
 
+db_tam = voir_csv('https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv')
+
 # print(voir_csv('https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv'))
 
 
-def city_station(city):
+def city_station():
 
 
     """ This function displays all the stations. """
@@ -31,10 +37,10 @@ def city_station(city):
     return station_list
 
 
-# print(city_station())
+print(city_station())
 
 
-def prochain_transport(station, db_tam):
+def prochain_transport(station):
 
 
     """ This function order the csv file to make some request, and answer
@@ -88,13 +94,15 @@ def station_inall(station, db_tam):
 
 
     logging.info(f"Vérifier si la station existe")
-    station = station.lower()
+    db_tam = voir_csv('https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv') 
+    # station = station.lower()
     stations = list(set(db_tam['station'].to_list()))
     if station in stations:
         return True
     else:
         return False
 
+# print(station_inall('BOUTONNET', db_tam))
 
 def ligne_inall(ligne, db_tam):
 
@@ -102,9 +110,18 @@ def ligne_inall(ligne, db_tam):
 
 
     logging.info(f"Vérifier si la ligne existe")
-    lignes=list(set(db_tam['lignes'].to_list()))
+    lignes=list(set(db_tam['ligne'].to_list()))
     if int(ligne) in lignes:
         return True
     else :
         return False
+
+# print(ligne_inall('1', db_tam))
+
+
+def station_tojson(station, db_tam):
+    station = db_tam[(db_tam["station"] == station)].head(1)
+    result = {}
+    result['station'] = str(station.iloc[i][0])
+    return station
 

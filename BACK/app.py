@@ -1,14 +1,23 @@
+import logging
+import pandas
 from flask import Flask, jsonify
 from flask import render_template
-import logging
 from flask import Flask, abort, jsonify
 from fonctions import prochain_transport
 from fonctions import depart_arrivee
-from flask_cors import CORS
+
+# from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)
+app.config['JSON_SORT_KEYS'] = False
+# CORS(app)
 
+
+logging.basicConfig(
+    filename='app_opendata.log',
+    level=logging.INFO,
+    format='%(asctime)s %(levelname)s - %(message)s',
+    datefmt='%d/%m/%Y %H:%M:%S',)
 
 # @app.route('/')
 # def entry_point():
@@ -18,15 +27,24 @@ CORS(app)
 def hello_world():
    return jsonify('Hello, World!')
 
-# #il manque la premiere route
-# @app.route('/city/<stations>')
-# def station():
-#     return jsonify(city_station())
+#il manque la premiere route
+@app.route('/city/<stations>')
+def station():
+
+    db_tam = fonction.voir_csv('https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv')
+    station = station.title()
+    # if fonction.station_inall(station, db_tam):
+    #     station = fonction.station_tojson(station, db_tam)
+    #     return jsonify(station)
+    # else:
+    #     logging.warning("Erreur 404: fonction station pas ok")
+    #     abort(404)
+    return jsonify(city_station())
 
 
-@app.route('/city/station/<stations>')
-def station(stations):
-    return jsonify(prochain_transport(stations))
+@app.route('/city/station/<station>')
+def station_city(station):
+    return jsonify(prochain_transport(station))
 
 @app.route('/city/next/<station>')
 def next_station(station):
