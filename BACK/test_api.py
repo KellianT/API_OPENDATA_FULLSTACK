@@ -25,7 +25,7 @@ class TestApiFlask(unittest.TestCase):
         self.assertEqual(result.content_type, 'application/json')
 
 
-# /city/next/:
+    # /city/next/:
     def test_home_city_next(self):
         """by_station if station display
         """
