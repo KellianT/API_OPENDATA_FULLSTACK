@@ -32,8 +32,9 @@ def hello_world():
 @app.route('/city/stations')
 def all_stations():
 
-
-    """ Liste tous les arrêts """
+    """ This function is used when the app.route is released.
+    It will us return all the stations in csv file
+    """
 
     # db_tam = fonctions.voir_csv('https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv')
     # station = station.title()
@@ -49,8 +50,10 @@ def all_stations():
 @app.route('/city/station/<station>')
 def next_transport_station(station):
 
-    
-    """ Liste les prochains transports à cette station """
+    """ This function is used when the app.route is 
+    released.It will us return next passage in a line and 
+    given destination which is asked by the user
+    """
 
 
     return jsonify(prochain_transport(station))
@@ -59,8 +62,10 @@ def next_transport_station(station):
 @app.route('/city/next/<station>')
 def next_station_data(station):
 
-
-    """ Prochain transport vers une direction (station, ligne, temps, destination) """
+    """ This function is used when the app.route is released.
+    It will us return the next transport in a given  direction 
+    (station, line, time, destination) all the lines included.
+    """
 
     return jsonify(depart_arrivee(station))
 
