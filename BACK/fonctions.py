@@ -10,8 +10,10 @@ from flask import abort
 def voir_csv(csv):
 
 
-    """This function return the CSV file in Pandas data format
-        Rename and delete unusual columns. """
+    """This function contains data from the CSV file and it returns 
+    in Pandas data format
+    Rename and delete unusual columns creating a mini data base.
+    """
 
         
     logging.info("création de la base de données")
@@ -30,7 +32,10 @@ db_tam = voir_csv('https://data.montpellier3m.fr/sites/default/files/ressources/
 def city_station():
 
 
-    """ This function displays all the stations. """
+    """ This function contains the list of all the stations.
+    It serves us to have only a list of the stations  present in csv.
+    """
+
 
     db_tam = voir_csv('https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv')
     station_list = list(set(db_tam['station'].tolist()))
@@ -43,8 +48,9 @@ print(city_station())
 def prochain_transport(station):
 
 
-    """ This function order the csv file to make some request, and answer
-        about the next transports. """
+    """ This function order the csv file  making a request, and answer
+    about the next transports.
+    """
 
 
     db_tam = voir_csv('https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv')
@@ -65,8 +71,9 @@ def prochain_transport(station):
 def depart_arrivee(station):
 
 
-    """This function order the csv file to make some request, and answer
-        about the next transports for a direction given. """
+    """This function order the csv file making a request, and answer
+    about the next transports for a given direction from a given station 
+    """
 
 
     db_tam = voir_csv('https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv')
@@ -90,7 +97,8 @@ def station_inall(station, db_tam):
     """ This function checks if the stop name is in the database.
     Parameters : a stop name (station), a database (db_tam) 
     Returns : True or False 
-    Exemple : 'COMEDIE' returns True, 'COM' returns False """
+    Exemple : 'COMEDIE' returns True, 'COM' returns False
+    """
 
 
     logging.info(f"Vérifier si la station existe")
@@ -104,9 +112,12 @@ def station_inall(station, db_tam):
 
 # print(station_inall('BOUTONNET', db_tam))
 
+
 def ligne_inall(ligne, db_tam):
 
-    """ This function checks if the route short name is in the csv """
+    """ This function checks if the route short name is in the csv.
+    If it is in the csv it returns 'True' otherwise it returns 'False'
+    """
 
 
     logging.info(f"Vérifier si la ligne existe")
@@ -120,6 +131,12 @@ def ligne_inall(ligne, db_tam):
 
 
 def station_tojson(station, db_tam):
+
+    """With this function we convert the format of the list's 
+    stations  which is in csv file, in the json format.
+    """
+
+
     station = db_tam[(db_tam["station"] == station)].head(1)
     result = {}
     result['station'] = str(station.iloc[i][0])
