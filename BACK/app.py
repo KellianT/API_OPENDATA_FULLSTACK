@@ -6,12 +6,10 @@ from flask import Flask, abort, jsonify
 from fonctions import prochain_transport
 from fonctions import depart_arrivee
 from fonctions import city_station
-
-# from flask_cors import CORS
+from flask_cors import CORS
 
 app = Flask(__name__)
-app.config['JSON_SORT_KEYS'] = False
-# CORS(app)
+CORS(app)
 
 
 logging.basicConfig(
@@ -20,21 +18,43 @@ logging.basicConfig(
     format='%(asctime)s %(levelname)s - %(message)s',
     datefmt='%d/%m/%Y %H:%M:%S',)
 
+
+
 @app.route('/')
 def entry_point():
-    return render_template('./app.html')
 
-@app.route('/hello_world')
-def hello_world():
-   return jsonify('Hello, World!')
 
-#il manque la premiere route
+    """ link html and route 3. """
+
+    return render_template('./route3.html')
+
+
+
+@app.route('/')
+def entry_point_deux():
+
+
+    """ link html and route 2. """
+
+    return render_template('./route2.html')
+
+
+
+@app.route('/')
+def entry_point_une():
+
+
+    """ link html and route 1. """
+
+    return render_template('./route1.html')
+
+
+
 @app.route('/city/stations')
 def all_stations():
 
-    """ This function is used when the app.route is released.
-    It will us return all the stations in csv file
-    """
+
+    """ Liste tous les arrêts """
 
     # db_tam = fonctions.voir_csv('https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv')
     # station = station.title()
@@ -50,24 +70,20 @@ def all_stations():
 @app.route('/city/station/<station>')
 def next_transport_station(station):
 
-    """ This function is used when the app.route is 
-    released.It will us return next passage in a line and 
-    given destination which is asked by the user
-    """
+    
+    """ Liste les prochains transports à cette station """
 
 
     return jsonify(prochain_transport(station))
 
 
-@app.route('/city/next/<station>')
-def next_station_data(station):
+@app.route('/city/next/')
+def next_station_data():
 
-    """ This function is used when the app.route is released.
-    It will us return the next transport in a given  direction 
-    (station, line, time, destination) all the lines included.
-    """
 
-    return jsonify(depart_arrivee(station))
+    """ Prochain transport vers une direction (station, ligne, temps, destination) """
+
+    return jsonify(depart_arrivee())
 
 
 
