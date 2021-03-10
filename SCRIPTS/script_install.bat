@@ -11,6 +11,10 @@ echo "Importe les fichiers app.py, fonctions.py et app.html"
 scp  C:\Users\utilisateur\Desktop\Python\Projets\API_OPENDATA_FULLSTACK\BACK\app.py kellian@10.0.4.59:./app.py
 scp  C:\Users\utilisateur\Desktop\Python\Projets\API_OPENDATA_FULLSTACK\BACK\fonctions.py kellian@10.0.4.59:./fonctions.py
 scp -r C:\Users\utilisateur\Desktop\Python\Projets\API_OPENDATA_FULLSTACK\BACK\templates kellian@10.0.4.59:./
+scp -r C:\Users\utilisateur\Desktop\Python\Projets\API_OPENDATA_FULLSTACK\BACK\static kellian@10.0.4.59:./
+
+
+
 
 clear
 
