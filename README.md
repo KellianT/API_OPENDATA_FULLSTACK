@@ -18,12 +18,15 @@ app.cpython-36.pyc
 
 fonctions.cpython-36.pyc 
 
+
+
 __Dans static :__
 
 
 CSS 
 
 JS 
+
 
 __Dans templates :__
 
