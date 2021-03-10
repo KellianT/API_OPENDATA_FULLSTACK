@@ -2,11 +2,11 @@ __Guide d'utilisation :__
 
 Télécharger repo Git # API_OPENDATA_FULLSTACK
 
-Déployez le script .bat (Qui va déplyer le script et set up la VM) à la fin de l'execution du scrip il va run le serveur HTTP.
+Déployez le script .bat (Qui va éxécuter le script et set up la VM) à la fin de l'execution du scrip il va run le serveur HTTP.
 
 Il faudra se rendre à l'adresse du serveur dans HOME '10.0.4.59:80', 
 
-Il y aura a faire la recherche de la station, ou toutes les stations sont sur la page.
+Les stations s'afficheront, ou il faudra rentrer dans la barre de recherche la station souhaitée.
 
 
 
