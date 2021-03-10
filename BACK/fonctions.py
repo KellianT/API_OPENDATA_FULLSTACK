@@ -21,6 +21,7 @@ def voir_csv(csv):
                                 'direction', 'heure_depart'])                                                
     return db_tam
 
+logging.debug(f"{'Connexion CSV file'}")
 db_tam = voir_csv('https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv')
 
 
@@ -31,6 +32,7 @@ def city_station():
 
     db_tam = voir_csv('https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv')
     station_list = list(set(db_tam['station'].tolist()))
+    logging.debug(f"{'Toutes les stations en liste'}")
     return station_list
 
 
@@ -49,6 +51,8 @@ def prochain_transport(station):
         resultat["station"] = str(db_tam.iloc[i][0])
         resultat["ligne"] = str(db_tam.iloc[i][1])
         result.append(resultat)
+                  
+    logging.debug(f"{'prochain transport'}")
     return result
 
 
@@ -70,6 +74,8 @@ def depart_arrivee():
         resultat["ligne"] = str(db_tam.iloc[i][1])
         resultat["direction"] = str(db_tam.iloc[i][2])
         result.append(resultat)
+    
+    logging.debug(f"{'prochain pour une direction donnée'}")
     return result
 
 
@@ -90,6 +96,7 @@ def station_inall(station, db_tam):
     if station in stations:
         return True
     else:
+        logging.debug(f"{'Station existe'}")
         return False
 
 # print(station_inall('BOUTONNET', db_tam))
@@ -104,6 +111,7 @@ def ligne_inall(ligne, db_tam):
     if int(ligne) in lignes:
         return True
     else :
+        logging.debug(f"{'Retour en Json'}")
         return False
 
 # print(ligne_inall('1', db_tam))
