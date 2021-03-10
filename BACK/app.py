@@ -15,11 +15,10 @@ CORS(app)
 
 
 logging.basicConfig(
-    filename='app_opendata.log',
-    level=logging.INFO,
+    filename='app_tam.log',
+    level=logging.WARNING,
     format='%(asctime)s %(levelname)s - %(message)s',
     datefmt='%d/%m/%Y %H:%M:%S',)
-
 
 
 @app.route('/')
@@ -28,7 +27,8 @@ def entry_point():
 
 
     """ link html and route 3. """
-
+    
+    logging.info(f"{'Connexion html et route 3'}")
     return render_template('./route3.html')
 
 
@@ -39,7 +39,8 @@ def entry_point_deux():
 
 
     """ link html and route 2. """
-
+                 
+    logging.warning(f"{'Connexion html et route 2'}")
     return render_template('./route2.html')
 
 
@@ -50,7 +51,8 @@ def entry_point_une():
 
 
     """ link html and route 1. """
-
+                    
+    logging.debug(f"{'Connexion html et route 1'}")
     return render_template('./route1.html')
 
 
@@ -80,7 +82,7 @@ def next_transport_station(station):
     
     """ Liste les prochains transports à cette station """
 
-
+    logging.debug(f"{'Affiche toutes les stations de la ville'}")
     return jsonify(prochain_transport(station))
 
 
@@ -90,7 +92,8 @@ def next_station_data():
 
 
     """ Prochain transport vers une direction (station, ligne, temps, destination) """
-
+                  
+    logging.debug(f"{'Prochain transport vers direction'}")
     return jsonify(depart_arrivee())
 
 
